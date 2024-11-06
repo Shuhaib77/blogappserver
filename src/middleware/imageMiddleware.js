@@ -1,6 +1,6 @@
 import cloudinary from "cloudinary";
 import multer from "multer";
-// import path from 'path';
+import path from 'path';
 import { configDotenv } from "dotenv";
 configDotenv();
 //configcloudinary
@@ -23,7 +23,7 @@ const uplod = multer({
 
 const uplodimg = (req, res, next) => {
   uplod.single("image")(req, res, async (error) => {
-    // console.log(req.file.originalname,'sampleee');
+    // console.log(req.file.path,'sampleee');
 
     if (error) {
       return next(error);

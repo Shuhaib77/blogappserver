@@ -9,7 +9,13 @@ export const register = async (req, res) => {
   const { name, email, password } = req.body;
   console.log(email);
 
-  console.log(name,email,password,req.cloudinaryImageUrl,'sample prininggg' );
+  console.log(
+    name,
+    email,
+    password,
+    req.cloudinaryImageUrl,
+    "sample prininggg"
+  );
   const match = await User.findOne({ email });
 
   if (match) {
@@ -19,7 +25,6 @@ export const register = async (req, res) => {
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds);
     const newpassword = await bcrypt.hash(password + salt, saltRounds);
-    
 
     const newuser = new User({
       image: req.cloudinaryImageUrl,
@@ -35,8 +40,6 @@ export const register = async (req, res) => {
     res.status(200).json(error.message);
   }
 };
-
-
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -62,4 +65,13 @@ export const login = async (req, res) => {
   return res
     .status(200)
     .json({ message: "login successfull", user: user, token: token });
+};
+
+export const getalluser = async(req, res) => {
+  const user = await User.find({}).populate("postId");
+  if (!user) {
+    return res.status(404).json({ message: "users not found" });
+  }
+
+  res.status(200).json({ message: " all users found", users: user });
 };

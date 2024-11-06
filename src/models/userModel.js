@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const userSchema=mongoose.Schema({
     image:{
         type:String,
@@ -17,10 +18,16 @@ const userSchema=mongoose.Schema({
         type:String,
         require:true
     },
+    postId:[{
+        type:mongoose.Schema.ObjectId,
+        ref:"Post",
+        require:true
+    }],
+
 
 
 
 })
  
-const User=mongoose.model('users',userSchema)
+const User=mongoose.model('User',userSchema)
 export default User
