@@ -73,5 +73,5 @@ export const getalluser = async(req, res) => {
     return res.status(404).json({ message: "users not found" });
   }
 
-  res.status(200).json({ message: " all users found", users: user });
+ return  res.status(200).json({ message: " all users found", users: user });
 };

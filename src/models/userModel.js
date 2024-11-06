@@ -23,6 +23,11 @@ const userSchema=mongoose.Schema({
         ref:"Post",
         require:true
     }],
+    saveId:[{
+        type:mongoose.Schema.ObjectId,
+        ref:"Save",
+        require:true
+    }],
 
 
 
