@@ -35,7 +35,7 @@ export const register = async (req, res) => {
 
     await newuser.save();
 
-    res.status(200).json({ message: "register success full", user: newuser });
+   return res.status(200).json({ message: "register success full", user: newuser });
   } catch (error) {
     res.status(200).json(error.message);
   }
@@ -73,5 +73,5 @@ export const getalluser = async(req, res) => {
     return res.status(404).json({ message: "users not found" });
   }
 
- return  res.status(200).json({ message: " all users found", users: user });
+  res.status(200).json({ message: " all users found", users: user });
 };
